@@ -10,6 +10,15 @@ MakeBlinkyDancer.prototype.constructor = MakeBlinkyDancer;
 
 MakeBlinkyDancer.prototype.step = function() {
   MakeDancer.prototype.step.call(this);
+  var randomLeft = function () {return Math.floor(Math.random() * 1200)};
+  var randomTop = function () {return Math.floor(Math.random() * 600)};
+  var randomRGB = function () {return Math.floor(Math.random() * 256)}
+
+  var randomizedColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`
+  styleSettings = {
+    border:'10px solid ' + randomizedColor,
+  };
+  this.$node.css(styleSettings);
   this.$node.toggle();
 }
 
