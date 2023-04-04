@@ -1,6 +1,7 @@
 var MakeMJ = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node.html('<img src="images/mj.gif">');
+  this.$node.css({border: '0px'})
   MakeDancer.prototype.setPosition.call(this);
   MakeDancer.prototype.step.call(this);
 }

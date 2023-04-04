@@ -10,18 +10,15 @@ MakeRainbowDancer.prototype.constructor = MakeRainbowDancer;
 
 MakeRainbowDancer.prototype.step = function() {
   MakeDancer.prototype.step.call(this);
-  // this.$node.toggle();
-  var colors = ['blue', 'green', 'yellow', 'purple', 'aqua', 'chartreuse', 'coral', 'darkorchid', 'greenyellow', 'lime', 'gold'];
-
-  var randomColor = function () {return Math.floor(Math.random() * 11)};
 
   var randomLeft = function () {return Math.floor(Math.random() * 1200)};
   var randomTop = function () {return Math.floor(Math.random() * 600)};
-  var randomRGB = function () {return Math.floor(Math.random() * 256)}
+  var randomRGB = function () {return Math.floor(Math.random() * 256)};
+  var randomSize = function () {return Math.floor(Math.random() * (35) + 5)};
 
-  var randomizedColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`
+  var randomColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`
   styleSettings = {
-    border:'10px solid ' + randomizedColor,
+    border: `${randomSize()}px solid ${randomColor}`,
   };
   this.$node.css(styleSettings);
   var rand = Math.random();
