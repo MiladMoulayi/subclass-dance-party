@@ -29,6 +29,23 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
+
+  $('.centerLineUpButton').on('click', function(event) {
+  // console.log($('.dancer').$node)
+  // $('.dancer').$node.step = undefined;
+  for (var i = 0; i < window.dancers.length; i++) {
+    var currDancer = window.dancers[i];
+    currDancer.stopDancing = true;
+    styleSettings = {
+      top: 40,
+      left: 40
+    };
+    currDancer.$node.css(styleSettings);
+  }
+})
 });
+
+
 
