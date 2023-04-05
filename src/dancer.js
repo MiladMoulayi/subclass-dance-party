@@ -17,7 +17,6 @@ MakeDancer.prototype.step = function () {
       clearTimeout(this.timeoutArr[i]);
     }
   }
-  console.log("still moving")
 }
 
 MakeDancer.prototype.setPosition = function() {

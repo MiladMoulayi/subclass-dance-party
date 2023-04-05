@@ -32,20 +32,16 @@ $(document).ready(function() {
     window.dancers.push(dancer);
   });
 
-  $('.centerLineUpButton').on('click', function(event) {
-  // console.log($('.dancer').$node)
-  // $('.dancer').$node.step = undefined;
-    var styleSettings = {
-      left: $("body").width() / 8,
-      top: $("body").height() / 2
-    }
+  $('.verticalLineUpButton').on('click', function(event) {
+
+    var spacing = $("body").height() / (window.dancers.length + 1);
 
     var reassign = function () {
       for (var j = 0; j < window.dancers.length; j++) {
         var aDancer = window.dancers[j];
-        aDancer.$node.css({
-          left: styleSettings.left + j * 100,
-          top: styleSettings.top
+        aDancer.$node.animate({
+          left: $("body").width() / 2 - aDancer.$node.width() / 2,
+          top: (j + 1) * spacing
         });
       }
     };
@@ -56,19 +52,29 @@ $(document).ready(function() {
     }
 
     setTimeout(reassign, 1000);
+  })
 
-    // var changePosition = function () {
-    //   for (var j = 0; j < window.dancers.length; j++) {
-    //     var currDancer = window.dancers[j];
-    //     currDancer.$node.css(styleSettings);
-    //     console.log(currDancer);
-    //   }
-    // }
+  $('.horizontalLineUpButton').on('click', function(event) {
 
-    // changePosition();
-    // setTimeout(changePosition, 2000);
+    var spacing = $("body").width() / (window.dancers.length + 1);
 
-})
+    var reassign = function () {
+      for (var j = 0; j < window.dancers.length; j++) {
+        var aDancer = window.dancers[j];
+        aDancer.$node.animate({
+          left: (j + 1) * spacing,
+          top: $("body").height() / 2 - aDancer.$node.height() / 2
+        });
+      }
+    };
+
+    for (var i = 0; i < window.dancers.length; i++) {
+      var currDancer = window.dancers[i];
+      currDancer.stopDancing = true;
+    }
+
+    setTimeout(reassign, 1000);
+  })
 });
 
 

@@ -20,20 +20,14 @@ MakeRainbowDancer.prototype.step = function() {
 
     var randomColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`
     styleSettings = {
-      border: `${randomSize()}px solid ${randomColor}`,
+      border: `10px solid ${randomColor}`,
     };
     this.$node.css(styleSettings);
     var rand = Math.random();
+    var x = $("body").width() * Math.random();
+    var y = $("body").height() * Math.random();
 
-      if (rand > .5) {
-        var posX = $("body").width() * Math.random()
-        this.$node.animate({left: posX});
-        console.log('posX: ', posX);
-      } else {
-        var posY = $("body").height() * Math.random()
-        this.$node.animate({top: posY});
-        console.log('posY: ', posY);
-      }
+    this.$node.animate({left: x, top: y});
   } else {
     this.$node.stop(true, true);
   }
