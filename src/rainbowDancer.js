@@ -12,7 +12,6 @@ MakeRainbowDancer.prototype.constructor = MakeRainbowDancer;
 MakeRainbowDancer.prototype.step = function() {
 
   MakeDancer.prototype.step.call(this);
-
   if (this.stopDancing === false) {
     var randomLeft = function () {return Math.floor(Math.random() * 1200)};
     var randomTop = function () {return Math.floor(Math.random() * 600)};
@@ -26,11 +25,17 @@ MakeRainbowDancer.prototype.step = function() {
     this.$node.css(styleSettings);
     var rand = Math.random();
 
-    if (rand > .5) {
-      this.$node.animate({left: $("body").width() * Math.random()});
-    } else {
-      this.$node.animate({top: $("body").height() * Math.random()});
-    }
+      if (rand > .5) {
+        var posX = $("body").width() * Math.random()
+        this.$node.animate({left: posX});
+        console.log('posX: ', posX);
+      } else {
+        var posY = $("body").height() * Math.random()
+        this.$node.animate({top: posY});
+        console.log('posY: ', posY);
+      }
+  } else {
+    this.$node.stop(true, true);
   }
   // if (this.rand > .5) {
   //   this.$node.animate({left: randomLeft()});

@@ -4,10 +4,20 @@ var MakeDancer = function(top, left, timeBetweenSteps) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
+  this.stopDancing = false;
+  this.timeoutArr = [];
 }
 
 MakeDancer.prototype.step = function () {
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  if (this.stopDancing === false) {
+    var timeout = setTimeout(this.step.bind(this), this.timeBetweenSteps);
+    this.timeoutArr.push(timeout);
+  } else {
+    for (var i = 0; i < this.timeoutArr.length; i++) {
+      clearTimeout(this.timeoutArr[i]);
+    }
+  }
+  console.log("still moving")
 }
 
 MakeDancer.prototype.setPosition = function() {

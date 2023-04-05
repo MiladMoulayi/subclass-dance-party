@@ -35,15 +35,39 @@ $(document).ready(function() {
   $('.centerLineUpButton').on('click', function(event) {
   // console.log($('.dancer').$node)
   // $('.dancer').$node.step = undefined;
-  for (var i = 0; i < window.dancers.length; i++) {
-    var currDancer = window.dancers[i];
-    currDancer.stopDancing = true;
-    styleSettings = {
-      top: 40,
-      left: 40
+    var styleSettings = {
+      left: $("body").width() / 8,
+      top: $("body").height() / 2
+    }
+
+    var reassign = function () {
+      for (var j = 0; j < window.dancers.length; j++) {
+        var aDancer = window.dancers[j];
+        aDancer.$node.css({
+          left: styleSettings.left + j * 100,
+          top: styleSettings.top
+        });
+      }
     };
-    currDancer.$node.css(styleSettings);
-  }
+
+    for (var i = 0; i < window.dancers.length; i++) {
+      var currDancer = window.dancers[i];
+      currDancer.stopDancing = true;
+    }
+
+    setTimeout(reassign, 1000);
+
+    // var changePosition = function () {
+    //   for (var j = 0; j < window.dancers.length; j++) {
+    //     var currDancer = window.dancers[j];
+    //     currDancer.$node.css(styleSettings);
+    //     console.log(currDancer);
+    //   }
+    // }
+
+    // changePosition();
+    // setTimeout(changePosition, 2000);
+
 })
 });
 
